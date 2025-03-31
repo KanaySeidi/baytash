@@ -1,0 +1,15 @@
+@import "tailwindcss";
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/src/assets/font/Gilroy-Regular.woff2") format("woff2"),
+    url("/src/assets/font/Gilroy-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: "Gilroy";
+}
