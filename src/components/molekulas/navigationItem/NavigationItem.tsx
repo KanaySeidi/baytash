@@ -18,6 +18,11 @@ export default function NavigationItem({ isOpen }: { isOpen: boolean }) {
             Главная
           </div>
         </Link>
+        <Link to="/baytashgroup">
+          <div className="text-sm/6 font-semibold text-white/50 hover:text-white cursor-pointer">
+            Бай Таш Групп
+          </div>
+        </Link>
         <Popover>
           <PopoverButton className="block text-sm/6 font-semibold text-white/50 focus:outline-none data-[active]:text-white data-[hover]:text-white data-[focus]:outline-1 data-[focus]:outline-white cursor-pointer">
             <div className="flex items-center gap-1">

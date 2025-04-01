@@ -5,6 +5,7 @@ import {
   Residence,
   News,
   Vacancy,
+  BayTash,
 } from "../components/pages";
 
 const routes = [
@@ -14,6 +15,7 @@ const routes = [
   { path: "/residence", element: <Residence /> },
   { path: "/news", element: <News /> },
   { path: "/vacancy", element: <Vacancy /> },
+  { path: "/baytashgroup", element: <BayTash /> },
 ];
 
 export default routes;

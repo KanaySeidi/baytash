@@ -3,8 +3,20 @@ import lines from "../../../assets/images/LINES.svg";
 import projectBuild from "../../../assets/images/project.jpg";
 import buildLogo from "../../../assets/icon/zdanie.svg";
 import GSlider from "../../organims/gslider/GSlider";
+import plan1 from "../../../assets/images/plan1.png";
+import plan2 from "../../../assets/images/plan2.png";
+import plan3 from "../../../assets/images/plan3.png";
+import locat from "../../../assets/images/locat.png";
+import video from "../../../assets/video/video.mp4";
+import gItem1 from "../../../assets/images/gItem1.jpg";
+import gItem2 from "../../../assets/images/item1.jpg";
+import gItem3 from "../../../assets/images/item3.jpg";
+import gItem4 from "../../../assets/images/items2.jpg";
+import { useState } from "react";
 
 const City = () => {
+  const [selectedImg, setSelectedImg] = useState<string | null>(null);
+
   const projectDescr = [
     {
       id: 1,
@@ -48,6 +60,29 @@ const City = () => {
       img: buildLogo,
     },
   ];
+
+  const planFnA = [
+    {
+      id: 1,
+      description: "ПЛАН ЭТАЖА 9 - 15 M:100",
+      btn: "Подробнее",
+      img: plan1,
+    },
+    {
+      id: 2,
+      description: "ПЛАН ЭТАЖА 9 - 15 M:100",
+      btn: "Подробнее",
+      img: plan2,
+    },
+    {
+      id: 3,
+      description: "ПЛАН ЭТАЖА 9 - 15 M:100",
+      btn: "Подробнее",
+      img: plan3,
+    },
+  ];
+
+  const images = [gItem1, gItem2, gItem3, gItem4];
 
   return (
     <div className="w-full h-full bg-white pt-20 relative">
@@ -142,7 +177,7 @@ const City = () => {
           </div>
         </div>
       </div>
-      <div className="w-11/12 mx-auto mt-20 h-[1000px]">
+      <div className="w-11/12 mx-auto mt-20 h-[650px]">
         <div className="flex gap-10 items-center">
           <h1 className="text-7xl">Галерея</h1>
           <p className="w-1/3 ">
@@ -150,7 +185,108 @@ const City = () => {
             живописном районе рядом с природой
           </p>
         </div>
-        <GSlider />
+        <div className="w-full mt-20">
+          <div className="w-full absolute left-0">
+            <GSlider images={images} />
+          </div>
+        </div>
+      </div>
+      <div className="w-11/12 mx-auto">
+        <h1 className="uppercase text-center text-4xl">
+          Планировка этажа и квартир
+        </h1>
+        <div className="w-full h-px rounded-4xl bg-gray-300 mt-4 mb-10"></div>
+        <div className="flex justify-between">
+          {planFnA.map((item) => (
+            <div key={item.id} className="w-[433px] h-[539px] text-center">
+              <div className="w-[433px] h-[420px]  bg-[#F0F0F0] rounded-4xl flex justify-center items-center">
+                <img
+                  src={item.img}
+                  alt="планировка"
+                  className="mix-blend-multiply"
+                />
+              </div>
+              <p className="font-medium my-4 text-lg">{item.description}</p>
+              <button
+                className="w-full text-white bg-[#EAA000] rounded-4xl py-2 font-semibold"
+                onClick={() => setSelectedImg(item.img)}
+              >
+                {item.btn}
+              </button>
+              {selectedImg && (
+                <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
+                  <div className="relative bg-white p-5 rounded-4xl shadow-lg">
+                    <button
+                      className="absolute top-2 right-2 text-xl font-bold"
+                      onClick={() => setSelectedImg(null)}
+                    >
+                      ✖
+                    </button>
+                    <img
+                      src={selectedImg}
+                      alt="Планировка"
+                      className="w-full h-auto max-w-2xl rounded-4xl"
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+        <div className="w-full h-[620px] rounded-4xl my-20">
+          <img src={locat} alt="" className="w-full h-full" />
+        </div>
+      </div>
+      <div className="w-full h-[1000px] bg-[#252525] rounded-t-4xl">
+        <div className="w-11/12 mx-auto text-white py-20">
+          <h1 className="text-4xl uppercase font-semibold mb-4">
+            Видео презентация
+          </h1>
+          <div className="w-full h-px rounded-4xl bg-gray-300 mb-14"></div>
+          <div className="w-full flex justify-between items-center gap-10">
+            <div className="flex flex-col gap-10 w-1/2">
+              <p className="text-2xl">Ботанический сад в шаговой доступности</p>
+              <p className="text-white/70">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Vestibulum accumsan, massa at bibendum eleifend, urna eros
+                tincidunt nisi, sed posuere nulla justo sit amet elit. Curabitur
+                tincidunt, velit a facilisis sollicitudin, mauris ligula
+                tincidunt neque, id laoreet risus lacus sed velit. Donec aliquam
+                libero et quam facilisis, sit amet ultricies nisi feugiat. Nulla
+                facilisi.
+              </p>
+            </div>
+            <video
+              className="w-1/2 h-[320px] object-cover rounded-4xl"
+              controls
+            >
+              <source src={video} type="video/mp4" />
+            </video>
+          </div>
+        </div>
+        <div className="w-11/12 mx-auto">
+          <p className="text-5xl text-white text-center uppercase">
+            Обратная связь
+          </p>
+          <p className="text-lg text-white text-center mt-5 ">
+            Станьте владельцем квартиры в ЖК "BAY TASH CITY" уже сегодня!
+          </p>
+          <div className="w-full h-px rounded-4xl mt-5 mb-20 bg-gray-300"></div>
+          <div className="flex justify-between gap-5 h-14 my-10 font-semibold">
+            <div className="border border-[#EAA000] text-[#EAA000] w-full flex justify-center items-center rounded-4xl">
+              <p>0312 903 333</p>
+            </div>
+            <div className="w-full flex justify-center items-center bg-[#EAA000] text-black rounded-4xl">
+              <p>0312 903 333</p>
+            </div>
+            <div className="border border-[#EAA000] text-[#EAA000] w-full flex justify-center items-center rounded-4xl">
+              <p>0312 903 333</p>
+            </div>
+          </div>
+          <div className="w-full rounded-4xl bg-[#EAA000] flex justify-center items-center h-14 text-lg font-semibold">
+            <p>Посмотреть планировку</p>
+          </div>
+        </div>
       </div>
     </div>
   );
