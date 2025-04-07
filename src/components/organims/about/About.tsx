@@ -81,16 +81,16 @@ const About = () => {
           </div>
         </div>
         <div className="block md:hidden mt-10">
-          <div className="w-full h-40 bg-[#252525] text-white flex flex-col justify-center items-center">
-            <h2 className="text-4xl">{t("about.banner2")}</h2>
-            <p className="text-sm mt-2">{t("about.banner2.1")}</p>
-          </div>
           <div className="w-full h-full flex justify-end">
             <img
               src={about2}
               alt="Безопасность"
               className="w-3/4 h-full object-cover"
             />
+          </div>
+          <div className="w-full h-40 bg-[#252525] text-white flex flex-col justify-center items-center order-5">
+            <h2 className="text-4xl">{t("about.banner2")}</h2>
+            <p className="text-sm mt-2">{t("about.banner2.1")}</p>
           </div>
         </div>
         <div className="hidden md:block">
