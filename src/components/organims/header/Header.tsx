@@ -33,17 +33,21 @@ const Header = () => {
     >
       <div className="w-11/12 mx-auto h-full flex justify-between items-center">
         <div className="flex h-full items-center gap-1 md:gap-5 lg:gap-10">
-          <img src={vector} alt="Logo" />
+          <img
+            src={vector}
+            alt="Logo"
+            className="size-24 md:size-14 lg:size-24"
+          />
           <div className="hidden md:flex">
             <NavigationItem isOpen={false} />
           </div>
         </div>
-        <div className="flex h-full items-center gap-5">
+        <div className="flex h-full items-center gap-5 md:gap-2">
           <div className="flex h-full items-center">
             <img src={icon} alt="Lang Icon" />
             <LanguageSwitcher />
           </div>
-          <div className="text-white hidden md:block">
+          <div className="text-white md:text-xs lg:text-base hidden md:block">
             <p>+996 552 90 33 33</p>
             <p>+996 312 58 88 83</p>
           </div>

@@ -1,25 +1,29 @@
+import { useTranslation } from "react-i18next";
+
 const Office = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <div className="w-full mt-20 pb-20">
         <div className="w-11/12 mx-auto">
-          <div className="flex gap-10 w-full items-center">
-            <div className="w-2/3 flex flex-col text-white/30">
+          <div className="flex flex-col md:flex-row gap-10 w-full items-center">
+            <div className="w-full md:w-2/3 flex flex-col text-white/30">
               <div>
-                <p className="text-6xl text-white mb-5">
-                  Расположение офиса продаж
+                <p className="text-lg md:text-3xl lg:text-6xl text-white mb-5">
+                  {t("office.officeLoc")}
                 </p>
-                <p>г. Бишкек, ул. Киевская 76</p>
+                <p>{t("office.officeCity")}</p>
               </div>
-              <div className="flex justify-between mt-10">
+              <div className="flex flex-col md:flex-row justify-between mt-10 gap-2 md:gap-0">
                 <div>
-                  <p className="text-white">График работы</p>
-                  <p>Отдел продаж</p>
-                  <p>Пн-Пт 9:00-19:00</p>
-                  <p>Сб 9:00-19:00</p>
+                  <p className="text-white"> {t("office.workTime")}</p>
+                  <p> {t("office.office")}</p>
+                  <p> {t("office.wt")}</p>
+                  <p> {t("office.wt2")}</p>
                 </div>
                 <div>
-                  <p className="text-white">Контакты</p>
+                  <p className="text-white">{t("office.contact")}</p>
                   <p>+996 312 588 883</p>
                   <p>+996 505 903 333</p>
                   <p>baytashgroup@gmail.com</p>

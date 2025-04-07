@@ -14,10 +14,12 @@ const Projects = () => {
             <div className="w-full border-20 border-[#252525] rounded-lg text-white ">
               <img src={projects1} alt="Здание" className="w-full rounded-lg" />
               <div className="w-11/12 mx-auto relative rounded-lg">
-                <div className="absolute bottom-5 h-52 flex flex-col gap-10">
-                  <p className="text-4xl font-medium">ЖК «BAY TASH TOWER» </p>
-                  <div className="w-full h-px bg-gray-500 rounded-lg mb-5"></div>
-                  <p>
+                <div className="absolute bottom-5 h-52 flex flex-col justify-end gap-2 md:gap-2 lg:gap-10">
+                  <p className="md:text-lg lg:text-4xl font-medium">
+                    ЖК «BAY TASH TOWER»{" "}
+                  </p>
+                  <div className="w-full h-px bg-gray-500 rounded-lg md:mb-2 lg:mb-5"></div>
+                  <p className="hidden md:block">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et dolore magna
                     aliqua. Ut enim ad minim veniam, quis nostrud exercitation
@@ -29,10 +31,12 @@ const Projects = () => {
             <div className="w-full border-20 border-[#252525] rounded-lg text-white ">
               <img src={projects2} alt="Здание" className="w-full rounded-lg" />
               <div className="w-11/12 mx-auto relative rounded-lg">
-                <div className="absolute bottom-5 h-52 flex flex-col gap-10">
-                  <p className="text-4xl font-medium">ЖК «BAY TASH TOWER»</p>
-                  <div className="w-full h-px bg-gray-500 rounded-lg mb-5"></div>
-                  <p>
+                <div className="absolute bottom-5 h-52 flex flex-col justify-end gap-2 md:gap-5 lg:gap-10">
+                  <p className="md:text-lg lg:text-4xl font-medium">
+                    ЖК «BAY TASH TOWER»
+                  </p>
+                  <div className="w-full h-px bg-gray-500 rounded-lg md:mb-2 lg:mb-5"></div>
+                  <p className="hidden md:block">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et dolore magna
                     aliqua. Ut enim ad minim veniam, quis nostrud exercitation
@@ -44,10 +48,12 @@ const Projects = () => {
             <div className="w-full border-20 border-[#252525] rounded-lg text-white ">
               <img src={projects3} alt="Здание" className="w-full rounded-lg" />
               <div className="w-11/12 mx-auto relative rounded-lg">
-                <div className="absolute bottom-5 h-52 flex flex-col gap-10">
-                  <p className="text-4xl font-medium">ЖК «ELITE RESIDENCE»</p>
-                  <div className="w-full h-px bg-gray-500 rounded-lg mb-5"></div>
-                  <p>
+                <div className="absolute bottom-5 h-52 flex flex-col justify-end gap-2 md:gap-5 lg:gap-10">
+                  <p className="md:text-lg lg:text-4xl font-medium">
+                    ЖК «ELITE RESIDENCE»
+                  </p>
+                  <div className="w-full h-px bg-gray-500 rounded-lg md:mb-2 lg:mb-5"></div>
+                  <p className="hidden md:block">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et dolore magna
                     aliqua. Ut enim ad minim veniam, quis nostrud exercitation

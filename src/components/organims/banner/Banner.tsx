@@ -3,30 +3,29 @@ import { motion, AnimatePresence } from "framer-motion";
 import item1 from "../../../assets/images/item1.jpg";
 import item2 from "../../../assets/images/items2.jpg";
 import item3 from "../../../assets/images/item3.jpg";
-
-const data = [
-  {
-    title: "BAY TASH TOWER",
-    description:
-      "Жилой комплекс BAY TASH TOWER — это сочетание элегантности, современного дизайна и премиального комфорта...",
-    img: item1,
-  },
-  {
-    title: "BAY TASH CITY",
-    description:
-      "BAY TASH CITY — это современный жилой комплекс, воплощающий динамику городского стиля жизни...",
-    img: item2,
-  },
-  {
-    title: "ELITE RESIDENCE",
-    description:
-      "Это роскошь, безупречный вкус, абсолютный комфорт, полная гармония, непревзойденное качество...",
-    img: item3,
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const Banner = () => {
   const [selected, setSelected] = useState(0);
+  const { t } = useTranslation();
+
+  const data = [
+    {
+      title: "BAY TASH TOWER",
+      description: t("banner.description1"),
+      img: item1,
+    },
+    {
+      title: "BAY TASH CITY",
+      description: t("banner.description2"),
+      img: item2,
+    },
+    {
+      title: "ELITE RESIDENCE",
+      description: t("banner.description3"),
+      img: item3,
+    },
+  ];
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen bg-black">
@@ -55,8 +54,12 @@ const Banner = () => {
             exit={{ opacity: 0, y: -50 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-xl font-bold">{data[selected].title}</h1>
-            <p className="mt-2 text-md">{data[selected].description}</p>
+            <h1 className="text-base md:text-md lg:text-xl font-bold">
+              {data[selected].title}
+            </h1>
+            <p className="mt-2 text-xs md:text-base lg:text-md">
+              {data[selected].description}
+            </p>
           </motion.div>
         </AnimatePresence>
 
