@@ -18,8 +18,8 @@ const Statistics = () => {
             />
             <img src={statis2} alt="здание" className="hidden md:block" />
             <div className="flex flex-col gap-5">
-              <p className="uppercase text-5xl">
-                <p className="uppercase text-5xl text-white text-center">
+              <p className="uppercase text-lg md:text-5xl">
+                <p className="text-white text-center">
                   {t("stats.part1")}{" "}
                   <span className="text-[#947A41]">
                     {t("stats.highlight1")}

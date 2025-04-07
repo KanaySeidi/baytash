@@ -9,8 +9,8 @@ const Footer = () => {
     <>
       <div className="w-full  bg-[#141414]">
         <div className="w-full bg-[#252525] rounded-t-2xl pb-20">
-          <div className="w-11/12 mx-auto pt-20 flex justify-between items-start gap-10 text-white">
-            <div className="flex flex-col w-1/2 gap-8 h-full">
+          <div className="w-11/12 mx-auto pt-20 flex flex-col md:flex-row justify-between items-start gap-10 text-white">
+            <div className="flex flex-col w-full md:w-1/2 gap-8 h-full">
               <img src={vector} alt="лого" className="w-40" />
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -25,7 +25,7 @@ const Footer = () => {
                 <img src={tt} alt="тикток" />
               </div>
             </div>
-            <div className="w-1/3 ml-20 text-lg h-full flex flex-col gap-5">
+            <div className="w-1/3 md:ml-20 text-lg h-full flex flex-col gap-5">
               <p className="text-2xl text-white/30">Страницы</p>
               <ul className="flex flex-col gap-2">
                 <li>Главаня</li>
