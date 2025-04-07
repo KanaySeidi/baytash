@@ -42,8 +42,8 @@ const Header = () => {
             <NavigationItem isOpen={false} />
           </div>
         </div>
-        <div className="flex h-full items-center gap-5 md:gap-2">
-          <div className="flex h-full items-center">
+        <div className="flex h-full items-center gap-2 md:gap-4">
+          <div className="flex h-full items-center gap-1">
             <img src={icon} alt="Lang Icon" />
             <LanguageSwitcher />
           </div>
