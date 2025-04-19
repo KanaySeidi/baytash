@@ -1,19 +1,6 @@
-import { useEffect } from "react";
-import { useVacancyStore } from "../../../api/vacancyStore/vacancyStore";
 import btg from "../../../assets/images/btg.png";
 
 const Vacancy = () => {
-  const { vacancies, loading, error, fetchVacancies } = useVacancyStore();
-
-  useEffect(() => {
-    // fetchVacancies();
-  }, []);
-
-  console.log(vacancies);
-
-  if (loading) return <p>Загрузка...</p>;
-  if (error) return <p>Ошибка: {error}</p>;
-
   const vacan = [
     {
       id: 1,
