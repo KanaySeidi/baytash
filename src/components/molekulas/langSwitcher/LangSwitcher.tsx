@@ -12,7 +12,6 @@ const LanguageSwitcher = () => {
       i18n.changeLanguage(selectedLanguage);
       localStorage.setItem("language", selectedLanguage);
 
-      // Добавляем/удаляем классы для шрифтов в зависимости от языка
       document.documentElement.classList.remove(
         currentLanguage === "ru" ? "font-ru" : "font-ky"
       );

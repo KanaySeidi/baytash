@@ -1,6 +1,19 @@
+import { useEffect } from "react";
+import { useVacancyStore } from "../../../api/vacancyStore/vacancyStore";
 import btg from "../../../assets/images/btg.png";
 
 const Vacancy = () => {
+  const { vacancies, loading, error, fetchVacancies } = useVacancyStore();
+
+  useEffect(() => {
+    // fetchVacancies();
+  }, []);
+
+  console.log(vacancies);
+
+  if (loading) return <p>Загрузка...</p>;
+  if (error) return <p>Ошибка: {error}</p>;
+
   const vacan = [
     {
       id: 1,
@@ -66,23 +79,23 @@ const Vacancy = () => {
 
   return (
     <>
-      <div className="absolute left-0 top-0 w-full -z-10">
-        <img src={btg} alt="" className="w-full" />
+      <div className="absolute left-0 top-0 w-full h-[300px]  sm:h-[400px]   md:h-[686px] -z-10">
+        <img src={btg} alt="" className="w-full h-full object-cover" />
       </div>
-      <div className="relative z-10 h-[686px] flex flex-col justify-center items-center w-11/12 mx-auto text-white text-center">
-        <h1 className="text-8xl">Вакансии</h1>
-        <p className="w-1/2 mt-5">
+      <div className="relative z-10 h-[300px] md:h-[686px] flex flex-col justify-center items-center w-11/12 mx-auto text-white text-center">
+        <h1 className="text-xl md:text-4xl lg:text-8xl">Вакансии</h1>
+        <p className="md:w-full lg:w-1/2 mt-5 text-xs sm:text-sm md:text-lg lg:text-xl">
           Присоединяйтесь к нашей команде! Мы ищем талантливых и амбициозных
           специалистов, готовых расти и развиваться вместе с нами. Проверьте
           актуальные вакансии и станьте частью успешного будущего.
         </p>
       </div>
-      <section className="w-full bg-[#141414] h-[1000px] pt-10">
+      <section className="w-full bg-[#141414] py-10">
         <div className="w-11/12 mx-auto">
-          <div className="flex flex-wrap justify-between gap-10  text-white">
+          <div className="flex flex-wrap justify-center md:justify-between gap-10  text-white">
             {vacan.map((item) => (
               <div
-                className="w-96 h-[375px]  bg-[#3E3E3E] rounded-4xl"
+                className="md:w-72 lg:w-96 h-[375px]  bg-[#3E3E3E] rounded-4xl"
                 key={item.id}
               >
                 <div className="w-11/12 h-full mx-auto flex flex-col justify-evenly">

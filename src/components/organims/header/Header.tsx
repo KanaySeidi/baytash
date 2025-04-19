@@ -49,7 +49,6 @@ const Header = () => {
           </div>
           <div className="text-white md:text-xs lg:text-base hidden md:block">
             <p>+996 552 90 33 33</p>
-            <p>+996 312 58 88 83</p>
           </div>
           <button
             className="block md:hidden"

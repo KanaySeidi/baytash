@@ -15,7 +15,26 @@ export default function GSlider({ images }: GSliderProps) {
     slidesToScroll: 1,
     autoplay: true,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 560,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: false,
+        },
+      },
+    ],
   };
+
   return (
     <Slider {...settings}>
       {images.map((item, index) => (

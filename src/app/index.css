@@ -1,9 +1,15 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "Gilroy";
-  src: url("/src/assets/font/Gilroy-Regular.woff2") format("woff2"),
-    url("/src/assets/font/Gilroy-Regular.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Neo Sans Pro", sans-serif;
+}
+
+p,
+span {
+  font-family: Tahoma, sans-serif;
 }
