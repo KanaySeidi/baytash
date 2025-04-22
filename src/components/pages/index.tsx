@@ -7,3 +7,4 @@ export { Vacancy } from "./vacancy/Vacancy.async";
 export { BayTash } from "./baytash/BayTash.async";
 export { Beton } from "./beton/Beton.async";
 export { Sand } from "./sand/Sand.async";
+export { Complexe } from "./complexe/Complexe.async";

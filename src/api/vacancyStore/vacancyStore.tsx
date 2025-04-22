@@ -3,7 +3,7 @@ import API from "../../helpers/axios";
 
 interface Vacancy {
   id: number;
-  title: string;
+  position: string;
   description: string;
 }
 

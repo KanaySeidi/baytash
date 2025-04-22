@@ -4,7 +4,7 @@ import { languages } from "../../atoms/language";
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
-  const currentLanguage = i18n.language || "en";
+  const currentLanguage = i18n.language || "ru";
 
   const changeLanguage = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedLanguage = event.target.value;

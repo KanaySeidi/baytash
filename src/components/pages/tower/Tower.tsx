@@ -1,46 +1,25 @@
 import { useTranslation } from "react-i18next";
-import cityImg from "../../../assets/images/city.png";
 import lines from "../../../assets/images/LINES.svg";
 import projectBuild from "../../../assets/images/project.jpg";
 import buildLogo from "../../../assets/icon/zdanie.svg";
 import GSlider from "../../organims/gslider/GSlider";
-import plan1 from "../../../assets/images/plan1.png";
-import plan2 from "../../../assets/images/plan2.png";
-import plan3 from "../../../assets/images/plan3.png";
 import locat from "../../../assets/images/locat.png";
-import video from "../../../assets/video/video.mp4";
-import gItem1 from "../../../assets/images/gItem1.jpg";
-import gItem2 from "../../../assets/images/item1.jpg";
-import gItem3 from "../../../assets/images/item3.jpg";
-import gItem4 from "../../../assets/images/items2.jpg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useComplexeStore } from "../../../api/complexStore/complexStore";
 
 const Tower = () => {
   const { t } = useTranslation();
   const [selectedImg, setSelectedImg] = useState<string | null>(null);
 
-  const projectDescr = [
-    {
-      id: 1,
-      description: t("city.projectDescr.1"),
-      img: buildLogo,
-    },
-    {
-      id: 2,
-      description: t("city.projectDescr.2"),
-      img: buildLogo,
-    },
-    {
-      id: 3,
-      description: t("city.projectDescr.3"),
-      img: buildLogo,
-    },
-    {
-      id: 4,
-      description: t("city.projectDescr.4"),
-      img: buildLogo,
-    },
-  ];
+  const { data, fetchComplexes, loading, error } = useComplexeStore();
+
+  useEffect(() => {
+    fetchComplexes();
+  }, []);
+
+  if (loading) return <div>Загрузка...</div>;
+  if (error) return <div>Ошибка: {error}</div>;
+  if (!data) return null;
 
   const prjFeat = [
     {
@@ -60,52 +39,40 @@ const Tower = () => {
     },
   ];
 
-  const planFnA = [
-    {
-      id: 1,
-      description: t("city.plan.1.desc"),
-      btn: t("city.plan.1.btn"),
-      img: plan1,
-    },
-    {
-      id: 2,
-      description: t("city.plan.2.desc"),
-      btn: t("city.plan.2.btn"),
-      img: plan2,
-    },
-    {
-      id: 3,
-      description: t("city.plan.3.desc"),
-      btn: t("city.plan.3.btn"),
-      img: plan3,
-    },
-  ];
-
-  const images = [gItem1, gItem2, gItem3, gItem4];
-
   return (
     <div className="w-full h-full bg-white pt-20 relative">
-      <div className="absolute w-full h-[500px] md:h-[700px] lg:h-[900px] top-0 left-0">
+      <div className="absolute w-full h-[520px] md:h-[700px] lg:h-[900px] top-0 left-0">
         <img
-          src={cityImg}
+          src={data.main_image_url}
           alt={t("city.alt")}
           className="w-full h-full object-cover"
         />
       </div>
 
-      <div className="relative w-11/12 h-[350px] md:h-[550px] lg:h-[750px] mx-auto">
+      <div className="relative w-11/12 h-[370px] md:h-[550px] lg:h-[780px] mx-auto">
         <div className="w-full h-full flex flex-col justify-end items-start gap-5 md:gap-8">
           <h1 className="text-white text-lg md:text-4xl lg:text-8xl font-bold">
-            ЖК Bay Tash Tower
+            {data.name}
           </h1>
           <ul className="flex flex-wrap md:flex-nowrap gap-2 md:gap-10 text-[#EAA000] text-xs md:text-base font-medium list-disc ml-2 md:ml-0 lg:mt-20">
-            <li>{t("city.info.0")}</li>
-            <li>{t("city.info.1")}</li>
-            <li>{t("city.info.2")}</li>
-            <li>{t("city.info.3")}</li>
+            <li>
+              {data.apartments_count} {t("city.info.0")}
+            </li>
+            <li>
+              {data.floors_count}
+              {t("city.info.1")}
+            </li>
+            <li>
+              {data.entrances_count}
+              {t("city.info.2")}
+            </li>
+            <li>
+              {data.parking_count}
+              {t("city.info.3")}
+            </li>
           </ul>
           <p className="w-full lg:w-1/2 text-white text-xs md:text-base">
-            {t("city.description")}
+            {data.short_description}
           </p>
           <button className="w-auto px-4 py-2 text-xs md:text-base text-white bg-[#EAA000] rounded-lg">
             {t("city.viewPlan")}
@@ -113,11 +80,11 @@ const Tower = () => {
         </div>
       </div>
 
-      <div className="absolute bg-[#141414] w-full h-[2000px] md:h-[1900px] lg:h-[950px] rounded-b-4xl">
+      <div className="absolute bg-[#141414] w-full h-[2100px] md:h-[2000px] lg:h-[1000px] rounded-b-4xl">
         <img src={lines} alt="" className="relative pt-40" />
       </div>
 
-      <div className="relative w-11/12 h-[2000px] md:h-[1900px] lg:h-[950px] mx-auto mt-10">
+      <div className="relative w-11/12 h-[2100px] md:h-[2000px] lg:h-[1000px] mx-auto mt-10">
         <div className="flex items-center gap-5 md:gap-10">
           <h1 className="text-white text-xl sm:text-4xl md:text-7xl">
             {t("city.aboutTitle")}
@@ -133,11 +100,11 @@ const Tower = () => {
           <img src={projectBuild} alt="" className="rounded-4xl shadow-2xl" />
           <div className="text-white flex flex-col justify-between">
             <p className="text-2xl lg:text-xl">{t("city.aboutIntro")}</p>
-            {projectDescr.map((item) => (
+            {data.advantages.map((item) => (
               <div key={item.id} className="flex gap-5 items-center">
-                <img src={item.img} alt="" />
+                <img src={buildLogo} alt="" />
                 <p className="text-white/70 text-justify py-2 md:py-0">
-                  {item.description}
+                  {item.title}
                 </p>
               </div>
             ))}
@@ -186,48 +153,47 @@ const Tower = () => {
         </div>
         <div className="w-full mt-20">
           <div className="w-full h-[400px] md:h-auto absolute left-0">
-            <GSlider images={images} />
+            <GSlider images={data.gallery.map((img) => img.image_url)} />
           </div>
         </div>
       </div>
 
-      <div className="w-11/12 mx-auto">
+      <div className="w-11/12 mx-auto mb-10">
         <h1 className="uppercase text-center text-4xl">
           {t("city.plansTitle")}
         </h1>
         <div className="w-full h-px rounded-4xl bg-gray-300 mt-4 mb-2 md:mb-10"></div>
-        <div className="w-full flex flex-col md:flex-row items-center md:justify-between lg:gap-10">
-          {planFnA.map((item) => (
-            <div key={item.id} className="w-full h-[539px] text-center">
-              <div className="bg-[#F0F0F0] rounded-4xl flex justify-center items-center">
+        <div className="w-full flex flex-col md:flex-row  gap-4">
+          {data.floor_plans.map((item) => (
+            <div
+              key={item.id}
+              className="w-full md:w-[48%] lg:w-[32%] flex flex-col justify-between text-center gap-4"
+            >
+              <div className="bg-[#F0F0F0] w-full h-[350px] sm:h-[400px] md:h-[380px] lg:h-[400px] xl:h-[440px] rounded-4xl flex justify-center items-center overflow-hidden">
                 <img
-                  src={item.img}
-                  alt="планировка"
-                  className="mix-blend-multiply"
+                  src={item.image_url}
+                  alt="Планировка"
+                  className="w-full h-full object-contain mix-blend-multiply"
                 />
               </div>
-              <p className="font-medium my-4 text-lg">{item.description}</p>
+              <p className="font-medium text-base md:text-lg">
+                {item.description}
+              </p>
               <button
                 className="w-full text-white bg-[#EAA000] rounded-4xl py-2 font-semibold"
-                onClick={() => setSelectedImg(item.img)}
+                onClick={() => setSelectedImg(item.image_url)}
               >
-                {item.btn}
+                {t("city.viewPlan")}
               </button>
-              {selectedImg && (
+              {selectedImg === item.image_url && (
                 <div
                   className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50"
                   onClick={() => setSelectedImg(null)}
                 >
                   <div
-                    className="relative bg-white p-5 rounded-4xl shadow-lg"
+                    className="relative bg-white p-5 rounded-4xl shadow-lg flex justify-center items-center"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <button
-                      className="absolute top-2 right-2 text-xl font-bold"
-                      onClick={() => setSelectedImg(null)}
-                    >
-                      ✖
-                    </button>
                     <img
                       src={selectedImg}
                       alt="Планировка"
@@ -239,8 +205,12 @@ const Tower = () => {
             </div>
           ))}
         </div>
-        <div className="w-full h-auto rounded-4xl mb-5 md:my-20">
-          <img src={locat} alt="" className="w-full h-full object-contain" />
+      </div>
+      <div className="w-full">
+        <div className="w-11/12 mx-auto">
+          <div className="w-full h-auto rounded-4xl mb-5 md:my-20 ">
+            <img src={locat} alt="" className="w-full h-full object-contain" />
+          </div>
         </div>
       </div>
 
@@ -250,18 +220,19 @@ const Tower = () => {
             {t("city.videoTitle")}
           </h1>
           <div className="w-full h-px rounded-4xl bg-gray-300 mb-14"></div>
-          <div className="w-full flex flex-col md:flex-row justify-between items-center gap-10">
-            <div className="flex flex-col gap-10 w-full md:w-1/2">
-              <p className="text-2xl">{t("city.botanicProximity")}</p>
-              <p className="text-white/70">{t("city.videoText")}</p>
+          {data.videos.map((item) => (
+            <div className="w-full flex flex-col md:flex-row justify-between items-center gap-10">
+              <div className="flex flex-col gap-10 w-full md:w-1/2">
+                <p className="text-2xl">{item.title}</p>
+              </div>
+              <video
+                className="w-full md:w-1/2 h-[320px] object-cover rounded-4xl"
+                controls
+              >
+                <source src={item.video_url} type="video/mp4" />
+              </video>
             </div>
-            <video
-              className="w-full md:w-1/2 h-[320px] object-cover rounded-4xl"
-              controls
-            >
-              <source src={video} type="video/mp4" />
-            </video>
-          </div>
+          ))}
         </div>
 
         <div className="w-11/12 mx-auto">

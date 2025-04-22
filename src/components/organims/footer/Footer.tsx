@@ -1,12 +1,18 @@
 import vector from "../../../assets/icon/fLogo.svg";
-import tg from "../../../assets/icon/tg.png";
-import wa from "../../../assets/icon/wa.png";
-import ig from "../../../assets/icon/ig.png";
-import tt from "../../../assets/icon/tt.png";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useContactStore } from "../../../api/contactStore/contactStore";
+import { useEffect } from "react";
 
 const Footer = () => {
+  const { data, fetchContacts } = useContactStore();
+
+  useEffect(() => {
+    fetchContacts();
+  }, []);
+
+  console.log(data);
+
   const navs = [
     {
       id: 1,
@@ -42,32 +48,21 @@ const Footer = () => {
           <div className="w-11/12 mx-auto pt-20 flex flex-col md:flex-row justify-between items-start gap-10 text-white">
             <div className="flex flex-col w-full md:w-1/2 gap-8 md:gap-20 h-full justify-between">
               <img src={vector} alt="лого" className="w-40" />
-
-              <div className="flex gap-4">
-                <motion.img
-                  src={tg}
-                  alt="телеграм"
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.8 }}
-                />
-                <motion.img
-                  src={wa}
-                  alt="вотсап"
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.8 }}
-                />
-                <motion.img
-                  src={ig}
-                  alt="инстаграмм"
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.8 }}
-                />
-                <motion.img
-                  src={tt}
-                  alt="тикток"
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.8 }}
-                />
+              <div className="flex flex-wrap gap-4 md:gap-2 ">
+                {data?.social_links.map((item) => (
+                  <div
+                    className="cursor-pointer w-8 md:w-14 lg:w-16"
+                    key={item.id}
+                    onClick={() => item.url && window.open(item.url, "_blank")}
+                  >
+                    <motion.img
+                      src={item.icon_url}
+                      alt={item.name}
+                      whileHover={{ scale: 1.2 }}
+                      whileTap={{ scale: 0.8 }}
+                    />
+                  </div>
+                ))}
               </div>
             </div>
             <div className="w-full md:w-1/3 md:ml-20 text-lg h-full flex flex-col gap-5">

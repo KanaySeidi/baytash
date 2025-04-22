@@ -1,68 +1,15 @@
+import { useEffect } from "react";
+import { useVacancyStore } from "../../../api/vacancyStore/vacancyStore";
 import btg from "../../../assets/images/btg.png";
 
 const Vacancy = () => {
-  const vacan = [
-    {
-      id: 1,
-      title: "Прораб (умеющий делать геодезию)",
-      subtitle: "опытом работы от 3-х летРабота в регионах",
-      conditions1: "трудоустройство по ТК КР",
-      conditions2: "соцпакет",
-      conditions3: "стабильная зарплата",
-      price: "оплата по договоренности",
-      btn: "Связаться",
-    },
-    {
-      id: 2,
-      title: "Прораб (умеющий делать геодезию)",
-      subtitle: "опытом работы от 3-х летРабота в регионах",
-      conditions1: "трудоустройство по ТК КР",
-      conditions2: "соцпакет",
-      conditions3: "стабильная зарплата",
-      price: "оплата по договоренности",
-      btn: "Связаться",
-    },
-    {
-      id: 3,
-      title: "Прораб (умеющий делать геодезию)",
-      subtitle: "опытом работы от 3-х летРабота в регионах",
-      conditions1: "трудоустройство по ТК КР",
-      conditions2: "соцпакет",
-      conditions3: "стабильная зарплата",
-      price: "оплата по договоренности",
-      btn: "Связаться",
-    },
-    {
-      id: 4,
-      title: "Прораб (умеющий делать геодезию)",
-      subtitle: "опытом работы от 3-х летРабота в регионах",
-      conditions1: "трудоустройство по ТК КР",
-      conditions2: "соцпакет",
-      conditions3: "стабильная зарплата",
-      price: "оплата по договоренности",
-      btn: "Связаться",
-    },
-    {
-      id: 5,
-      title: "Прораб (умеющий делать геодезию)",
-      subtitle: "опытом работы от 3-х летРабота в регионах",
-      conditions1: "трудоустройство по ТК КР",
-      conditions2: "соцпакет",
-      conditions3: "стабильная зарплата",
-      price: "оплата по договоренности",
-      btn: "Связаться",
-    },
-    {
-      id: 6,
-      title: "Прораб (умеющий делать геодезию)",
-      subtitle: "опытом работы от 3-х летРабота в регионах",
-      conditions1: "трудоустройство по ТК КР",
-      conditions2: "соцпакет",
-      conditions3: "стабильная зарплата",
-      price: "оплата по договоренности",
-      btn: "Связаться",
-    },
-  ];
+  const { vacancies, fetchVacancies } = useVacancyStore();
+
+  useEffect(() => {
+    fetchVacancies();
+  }, []);
+
+  console.log(vacancies);
 
   return (
     <>
@@ -80,23 +27,19 @@ const Vacancy = () => {
       <section className="w-full bg-[#141414] py-10">
         <div className="w-11/12 mx-auto">
           <div className="flex flex-wrap justify-center md:justify-between gap-10  text-white">
-            {vacan.map((item) => (
+            {vacancies.map((item) => (
               <div
                 className="md:w-72 lg:w-96 h-[375px]  bg-[#3E3E3E] rounded-4xl"
                 key={item.id}
               >
                 <div className="w-11/12 h-full mx-auto flex flex-col justify-evenly">
-                  <p className="text-2xl font-semibold">{item.title}</p>
-                  <p>{item.subtitle}</p>
+                  <p>{item.position}</p>
                   <div>
                     <p className="font-semibold">Условия:</p>
-                    <p> - {item.conditions1}</p>
-                    <p> - {item.conditions2}</p>
-                    <p> - {item.conditions3}</p>
+                    <p className="pl-4">{item.description}</p>
                   </div>
-                  <p>{item.price}</p>
                   <button className="w-full h-10 bg-[#EAA000] rounded-4xl font-semibold">
-                    {item.btn}
+                    Связаться
                   </button>
                 </div>
               </div>

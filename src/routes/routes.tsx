@@ -8,10 +8,12 @@ import {
   BayTash,
   Beton,
   Sand,
+  Complexe,
 } from "../components/pages";
 
 const routes = [
   { path: "/", element: <Main /> },
+  { path: "/complexe/:id", element: <Complexe /> },
   { path: "/tower", element: <Tower /> },
   { path: "/city", element: <City /> },
   { path: "/residence", element: <Residence /> },
