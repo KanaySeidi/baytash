@@ -18,11 +18,14 @@ const Banner = () => {
   console.log(data);
 
   const dataIn =
-    data?.slider_images?.map((slide) => ({
-      title: slide.title,
-      description: slide.description,
-      img: slide.image_url,
-    })) ?? [];
+    data?.slider_images
+      ?.map((slide) => ({
+        title: slide.title,
+        description: slide.description,
+        img: slide.image_url,
+        order: slide.order,
+      }))
+      ?.sort((a, b) => a.order - b.order) ?? [];
 
   if (loading) return <Loader />;
 

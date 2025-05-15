@@ -116,7 +116,7 @@ export default function NavigationItem({
                     }}
                   >
                     <p className="font-semibold md:text-xs lg:text-base text-white">
-                      BAY TASH 101 TOWER
+                      BAY TASH 111 TOWER
                     </p>
                     <p className="text-white/50 md:text-xs lg:text-base">
                       {t("header.project6")}
