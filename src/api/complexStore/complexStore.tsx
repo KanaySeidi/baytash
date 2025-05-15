@@ -44,21 +44,21 @@ export interface Complex {
 }
 
 interface ComplexeStore {
-  data: Complex | null;
+  complex: Complex | null;
   loading: boolean;
   error: string | null;
-  fetchComplexes: () => Promise<void>;
+  fetchComplexesById: (id: number) => Promise<void>;
 }
 
 export const useComplexeStore = create<ComplexeStore>((set) => ({
-  data: null,
+  complex: null,
   loading: false,
   error: null,
-  fetchComplexes: async () => {
+  fetchComplexesById: async (id: number) => {
     set({ loading: true, error: null });
     try {
-      const response = await API<Complex[]>("/complexes");
-      set({ data: response.data[0], loading: false });
+      const response = await API<Complex>(`/complexes/${id}`);
+      set({ complex: response.data, loading: false });
     } catch (error: unknown) {
       if (error instanceof Error) {
         set({ error: error.message, loading: false });

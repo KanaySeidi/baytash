@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 
 const Office = () => {
   const { t } = useTranslation();
@@ -13,20 +14,43 @@ const Office = () => {
                 <p className="text-lg md:text-3xl lg:text-6xl text-white mb-5">
                   {t("office.officeLoc")}
                 </p>
-                <p>{t("office.officeCity")}</p>
+                <p className="">{t("office.officeCity")}</p>
               </div>
               <div className="flex flex-col md:flex-row justify-between mt-10 gap-2 md:gap-0">
                 <div>
-                  <p className="text-white"> {t("office.workTime")}</p>
+                  <p className="text-white mt-2"> {t("office.workTime")}</p>
                   <p> {t("office.office")}</p>
                   <p> {t("office.wt")}</p>
                   <p> {t("office.wt2")}</p>
                 </div>
                 <div>
                   <p className="text-white">{t("office.contact")}</p>
-                  <p>+996 312 588 883</p>
-                  <p>+996 505 903 333</p>
-                  <p>baytashgroup@gmail.com</p>
+                  <div className="flex flex-col gap-2 cursor-pointer mt-2">
+                    <motion.div
+                      onClick={() => window.open("https://wa.me/+996505903333")}
+                      whileHover={{ scale: 1.2 }}
+                      whileTap={{ scale: 0.8 }}
+                      className="origin-left"
+                    >
+                      <p>+996 505 903 333</p>
+                    </motion.div>
+                    <motion.div
+                      onClick={() => window.open("https://wa.me/+996772903333")}
+                      whileHover={{ scale: 1.2 }}
+                      whileTap={{ scale: 0.8 }}
+                      className="origin-left"
+                    >
+                      <p>+996 772 903 333</p>
+                    </motion.div>
+                    <motion.div
+                      onClick={() => window.open("https://wa.me/+996552903333")}
+                      whileHover={{ scale: 1.2 }}
+                      whileTap={{ scale: 0.8 }}
+                      className="origin-left"
+                    >
+                      <p>+996 552 903 333</p>
+                    </motion.div>
+                  </div>
                 </div>
               </div>
             </div>

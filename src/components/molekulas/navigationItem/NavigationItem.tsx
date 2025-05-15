@@ -2,26 +2,32 @@ import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
-export default function NavigationItem({ isOpen }: { isOpen: boolean }) {
+export default function NavigationItem({
+  isOpen,
+  onLinkClick,
+}: {
+  isOpen: boolean;
+  onLinkClick?: () => void;
+}) {
   const { t } = useTranslation();
 
   return (
     <div
       className={`flex w-full justify-center ${
-        isOpen ? "flex-col items-center gap-4" : ""
+        isOpen ? "flex-col items-center gap-2 lg:gap-4" : ""
       }`}
     >
       <div
-        className={`flex gap-8 cursor-pointer ${
-          isOpen ? "flex-col items-center gap-4" : ""
+        className={`flex gap-4 lg:gap-8 cursor-pointer ${
+          isOpen ? "flex-col items-center gap-2 lg:gap-4" : ""
         }`}
       >
-        <Link to="/">
+        <Link to="/" onClick={onLinkClick}>
           <div className="text-sm/6 md:text-xs lg:text-base font-semibold text-white/50 hover:text-white">
             {t("header.main")}
           </div>
         </Link>
-        <Link to="/baytashgroup">
+        <Link to="/baytashgroup" onClick={onLinkClick}>
           <div className="text-sm/6 md:text-xs lg:text-base font-semibold text-white/50 hover:text-white cursor-pointer">
             Бай Таш Групп
           </div>
@@ -58,11 +64,14 @@ export default function NavigationItem({ isOpen }: { isOpen: boolean }) {
                 <div className="p-3">
                   <Link
                     className="block rounded-lg py-2 px-3 transition hover:bg-white/5"
-                    to="/tower"
-                    onClick={() => close()}
+                    to="/complexe/1"
+                    onClick={() => {
+                      close();
+                      onLinkClick?.();
+                    }}
                   >
                     <p className="font-semibold md:text-xs lg:text-base text-white">
-                      BAY TASH TOWER
+                      BAY TASH CITY
                     </p>
                     <p className="text-white/50 md:text-xs lg:text-base">
                       {t("header.project1")}
@@ -70,11 +79,14 @@ export default function NavigationItem({ isOpen }: { isOpen: boolean }) {
                   </Link>
                   <Link
                     className="block rounded-lg py-2 px-3 transition hover:bg-white/5"
-                    to="/city"
-                    onClick={() => close()}
+                    to="/complexe/2"
+                    onClick={() => {
+                      close();
+                      onLinkClick?.();
+                    }}
                   >
                     <p className="font-semibold md:text-xs lg:text-base text-white">
-                      BAY TASH CITY
+                      BAY TASH TOWER
                     </p>
                     <p className="text-white/50 md:text-xs lg:text-base">
                       {t("header.project2")}
@@ -82,8 +94,11 @@ export default function NavigationItem({ isOpen }: { isOpen: boolean }) {
                   </Link>
                   <Link
                     className="block rounded-lg py-2 px-3 transition hover:bg-white/5"
-                    to="/residence"
-                    onClick={() => close()}
+                    to="/complexe/3"
+                    onClick={() => {
+                      close();
+                      onLinkClick?.();
+                    }}
                   >
                     <p className="font-semibold md:text-xs lg:text-base text-white">
                       ELITE RESIDENCE
@@ -94,8 +109,26 @@ export default function NavigationItem({ isOpen }: { isOpen: boolean }) {
                   </Link>
                   <Link
                     className="block rounded-lg py-2 px-3 transition hover:bg-white/5"
+                    to="/stoodin"
+                    onClick={() => {
+                      close();
+                      onLinkClick?.();
+                    }}
+                  >
+                    <p className="font-semibold md:text-xs lg:text-base text-white">
+                      BAY TASH 101 TOWER
+                    </p>
+                    <p className="text-white/50 md:text-xs lg:text-base">
+                      {t("header.project6")}
+                    </p>
+                  </Link>
+                  <Link
+                    className="block rounded-lg py-2 px-3 transition hover:bg-white/5"
                     to="/beton-zavod"
-                    onClick={() => close()}
+                    onClick={() => {
+                      close();
+                      onLinkClick?.();
+                    }}
                   >
                     <p className="font-semibold md:text-xs lg:text-base text-white">
                       {t("header.project4")}
@@ -104,7 +137,10 @@ export default function NavigationItem({ isOpen }: { isOpen: boolean }) {
                   <Link
                     className="block rounded-lg py-2 px-3 transition hover:bg-white/5"
                     to="/peschaniy-karier"
-                    onClick={() => close()}
+                    onClick={() => {
+                      close();
+                      onLinkClick?.();
+                    }}
                   >
                     <p className="font-semibold md:text-xs lg:text-base text-white">
                       {t("header.project5")}
@@ -115,12 +151,12 @@ export default function NavigationItem({ isOpen }: { isOpen: boolean }) {
             </>
           )}
         </Popover>
-        <Link to="/news">
+        <Link to="/news" onClick={onLinkClick}>
           <div className="text-sm/6 md:text-xs lg:text-base font-semibold text-white/50 hover:text-white cursor-pointer">
             {t("header.news")}
           </div>
         </Link>
-        <Link to="/vacancy">
+        <Link to="/vacancy" onClick={onLinkClick}>
           <div className="text-sm/6 md:text-xs lg:text-base font-semibold text-white/50 hover:text-white cursor-pointer">
             {t("header.vacancy")}
           </div>

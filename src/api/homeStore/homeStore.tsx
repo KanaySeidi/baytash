@@ -7,6 +7,8 @@ export interface ISliderImage {
   is_clickable: boolean;
   link: string | null;
   order: number;
+  title: string;
+  description: string;
 }
 
 export interface IPerfectionBlock {

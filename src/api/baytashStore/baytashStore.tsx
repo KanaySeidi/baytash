@@ -1,15 +1,12 @@
-// src/api/aboutStore.ts
 import { create } from "zustand";
 import API from "../../helpers/axios";
 
-// Тип для изображения в галерее
 export interface IGalleryImage {
   id: number;
-  image_url: string;
+  image_url: string | null;
   caption: string | null;
 }
 
-// Тип для блока
 export interface IAboutBlock {
   id: number;
   block_type: string;
@@ -20,7 +17,6 @@ export interface IAboutBlock {
   gallery_images: IGalleryImage[];
 }
 
-// Тип всей страницы
 export interface IAboutPage {
   id: number;
   title: string;

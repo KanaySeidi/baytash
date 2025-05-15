@@ -7,7 +7,7 @@ import { useNewsStore, useVacancyStore } from "../api";
 import { useHomeStore } from "../api/homeStore/homeStore";
 import { useBaytashStore } from "../api/baytashStore/baytashStore";
 import { useContactStore } from "../api/contactStore/contactStore";
-import { useComplexeStore } from "../api/complexStore/complexStore";
+import { Error } from "../components/pages";
 
 function App() {
   const { i18n } = useTranslation();
@@ -16,7 +16,6 @@ function App() {
   const { fetchNews } = useNewsStore();
   const { fetchBaytash } = useBaytashStore();
   const { fetchContacts } = useContactStore();
-  const { fetchComplexes } = useComplexeStore();
 
   useEffect(() => {
     const onLangChange = () => {
@@ -25,7 +24,6 @@ function App() {
       fetchNews();
       fetchBaytash();
       fetchContacts();
-      fetchComplexes();
     };
 
     i18n.on("languageChanged", onLangChange);
@@ -38,7 +36,7 @@ function App() {
   const router = createBrowserRouter([
     {
       element: <Layout />,
-      errorElement: null,
+      errorElement: <Error />,
       children: routes,
     },
   ]);

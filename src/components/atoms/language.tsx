@@ -10,6 +10,6 @@ export const languages: Language[] = [
   },
   {
     title: "Кыр",
-    key: "kg",
+    key: "ky",
   },
 ];

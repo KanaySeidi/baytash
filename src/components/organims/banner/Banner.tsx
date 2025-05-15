@@ -3,31 +3,31 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useHomeStore } from "../../../api/homeStore/homeStore";
+import { Loader } from "../loader/Loader";
 
 const Banner = () => {
   const [selected, setSelected] = useState(0);
   const { t } = useTranslation();
 
-  const { data, fetchHomeData } = useHomeStore();
+  const { data, loading, fetchHomeData } = useHomeStore();
 
   useEffect(() => {
     fetchHomeData();
   }, []);
 
+  console.log(data);
+
   const dataIn =
-    data?.slider_images?.map((slide, index) => ({
-      title:
-        index === 0
-          ? "BAY TASH TOWER"
-          : index === 1
-          ? "BAY TASH CITY"
-          : "ELITE RESIDENCE",
-      description: t(`banner.description${index + 1}`),
+    data?.slider_images?.map((slide) => ({
+      title: slide.title,
+      description: slide.description,
       img: slide.image_url,
     })) ?? [];
 
+  if (loading) return <Loader />;
+
   return (
-    <div className="w-full">
+    <div className="w-full outline-none">
       <div className="relative w-full h-screen flex flex-col items-center justify-center min-h-screen bg-black">
         <motion.div
           key={selected}
@@ -50,13 +50,13 @@ const Banner = () => {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={selected}
-                  className="p-8 max-w-lg text-white rounded-lg bg-black/70 shadow-2xl sm:w-full sm:max-w-md sm:p-4 flex flex-col justify-start items-start gap-5"
+                  className="p-8 max-w-lg text-white rounded-lg bg-black/70 shadow-2xl sm:w-full md:w-full sm:p-4 flex flex-col justify-start items-start gap-5"
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -50 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <h1 className="text-base md:text-md lg:text-xl font-bold">
+                  <h1 className="text-base md:text-md lg:text-xl font-bold text-[#EAA000]">
                     {dataIn[selected]?.title}
                   </h1>
                   <p className="mt-2 text-xs md:text-base lg:text-md">

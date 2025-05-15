@@ -1,25 +1,32 @@
 @import "tailwindcss";
 
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Inter", sans-serif;
+  }
 
-@font-face {
-  font-family: "Neo Sans Pro";
-  src: 
-    url("/src/assets/font/NeoSansPro.eot"); /* IE9 Compat Modes */
-  src: 
-    url("/src/assets/font/NeoSansPro.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-    url("/src/assets/font/NeoSansPro.woff2") format("woff2"), /* Сжатый и быстрый */
-    url("/src/assets/font/NeoSansPro.woff") format("woff"),
-    url("/src/assets/font/NeoSansPro.ttf") format("truetype");
-  font-weight: normal;
+  p, span {
+    font-family: Tahoma, sans-serif;
+  }
+}
+
+.slick-prev, .slick-next {
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(186, 4, 4, 0.6); /* серый фон */
+  border-radius: 9999px;
+}
+
+.slick-prev:before, .slick-next:before {
+  color: rgb(162, 150, 13);
+  font-size: 20px;
+  opacity: 1;
+}
+
+
+.stoodin {
+  font-family: "Marck Script", cursive;
+  font-weight: 400;
   font-style: normal;
-}
-
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Neo Sans Pro", sans-serif;
-}
-
-p,
-span {
-  font-family: Tahoma, sans-serif;
 }

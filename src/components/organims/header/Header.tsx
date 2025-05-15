@@ -4,6 +4,7 @@ import icon from "../../../assets/icon/Icon.svg";
 import burger from "../../../assets/icon/burger.svg";
 import NavigationItem from "../../molekulas/navigationItem/NavigationItem";
 import LanguageSwitcher from "../../molekulas/langSwitcher/LangSwitcher";
+import { motion } from "framer-motion";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,8 +28,8 @@ const Header = () => {
     <div
       className={`w-full  fixed top-0 left-0 z-50 ${
         isScroll
-          ? "h-20 bg-[#1A1A1A] duration-1000"
-          : "h-10 bg-transparent pt-4 duration-1000"
+          ? "h-24 bg-[#1A1A1A] duration-1000"
+          : "h-16 bg-[#252525] duration-1000"
       }`}
     >
       <div className="w-11/12 mx-auto h-full flex justify-between items-center">
@@ -48,7 +49,31 @@ const Header = () => {
             <LanguageSwitcher />
           </div>
           <div className="text-white md:text-xs lg:text-base hidden md:block">
-            <p>+996 552 90 33 33</p>
+            {isScroll ? (
+              <div className="flex flex-col gap-2">
+                <motion.p
+                  key="multi"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 1 }}
+                >
+                  +996 505 903 333
+                </motion.p>
+                <p>+996 552 903 333</p>
+                <motion.p
+                  key="multi"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ duration: 1 }}
+                >
+                  +996 772 903 333
+                </motion.p>
+              </div>
+            ) : (
+              <p>+996 552 903 333</p>
+            )}
           </div>
           <button
             className="block md:hidden"
@@ -77,13 +102,31 @@ const Header = () => {
         </div>
       </div>
       {isOpen && (
-        <div className="absolute top-20 left-0 w-full bg-black text-white p-5 md:hidden flex flex-col gap-4">
-          <NavigationItem isOpen={true} />
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0 }}
+          transition={{
+            duration: 0.4,
+            scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
+          }}
+          className="absolute top-0 left-0 w-full h-screen bg-black text-white p-5 md:hidden flex flex-col justify-center items-center gap-4"
+        >
+          <motion.button
+            whileHover={{ scale: 1.4 }}
+            whileTap={{ scale: 0.8 }}
+            onClick={() => setIsOpen(false)}
+            className="absolute top-2 right-8 text-2xl"
+          >
+            Х
+          </motion.button>
+          <NavigationItem isOpen={true} onLinkClick={() => setIsOpen(false)} />
           <div className="flex flex-col items-center gap-2 mt-5 ">
-            <p>+996 552 90 33 33</p>
-            <p>+996 312 58 88 83</p>
+            <p>+996 505 903 333</p>
+            <p>+996 552 903 333</p>
+            <p>+996 772 903 333</p>
           </div>
-        </div>
+        </motion.div>
       )}
     </div>
   );
